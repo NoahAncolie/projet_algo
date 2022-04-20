@@ -1,6 +1,6 @@
 // exercice 1
 
-const isKInArray = (array, k) => {
+const isKInArrayA = (array, k) => {
     let result = false
     array.map(number => {
         array.map(number2 => {
@@ -12,12 +12,11 @@ const isKInArray = (array, k) => {
     return (result)
 }
 
-//exercice 2
+// exercice 2
 
 const skyscraperA = (array) => {
     let result = 0
     let indexMax = 0
-    let indexMin = 0
     for (let i = 0; i < array.length; i++) {
         if (array[i] >= array[indexMax]) {
             indexMax = i
@@ -38,4 +37,28 @@ const skyscraperA = (array) => {
     return (result)
 }
 
-console.log(skyscraperA([4,2,1,2,3,0,3,1,1,2,1,0,0,0,0]))
+// exercice 3 --> UN SEUL PASSAGE SUR LA LISTE ??? --> complexité O(n²) ? array.indexOf parse array ?
+
+const isKInArrayB = (array, k) => {
+    result = false
+    array.map(number => {
+        if (array.indexOf(k - number) !== -1) {
+            result =  true
+        }
+    })
+    return result
+}
+
+// exercice 4 --> UN SEUL PASSAGE SUR LA LISTE ?? complexité < O(n) ? --> Exercice 6 ?
+
+const skyscraperB = (array) => {
+    let result = 1
+    let last = array.length - 1
+    for (let i = array.length - 1; i >= 0; i--) {
+        if (array[last] < array[i]) {
+            result++
+            last = i
+        }
+    }
+    return result
+}
