@@ -21,18 +21,21 @@ const skyscraperA = (array) => {
     for (let i = 0; i < array.length; i++) {
         if (array[i] >= array[indexMax]) {
             indexMax = i
+            result = 0
         }
         if (array[i + 1] < array[i]) {
             result++
         } else if (array[i + 1] > array[i]) {
             j = i;
-            while (array[j] < array[i]) {
+            while (array[j] <= array[i]) {
+                if (array[j] > array[j + 1]) {
+                    result--
+                }
                 j--
-                result--
             }
         }
     }
     return (result)
 }
 
-console.log(skyscraperA([4,2,1,2,3]))
+console.log(skyscraperA([4,2,1,2,3,0,3,1,1,2,1,0,0,0,0]))
