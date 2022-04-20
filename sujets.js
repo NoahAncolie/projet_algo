@@ -36,7 +36,7 @@ const isKInArrayC = (array, k, x = 0, y = 0) => {
     isKInArrayC(array, k, x + 1, y)
 }
 
-// exercice 2
+// exercice 2 --> complexité un peu moins que O(n²) --> Boucles imbriqués
 
 const skyscraperA = (array) => {
     let result = 0
@@ -61,7 +61,7 @@ const skyscraperA = (array) => {
     return (result)
 }
 
-// exercice 4 --> UN SEUL PASSAGE SUR LA LISTE ?? complexité < O(n) ? --> Exercice 6 ?
+// exercice 4 --> UN SEUL PASSAGE SUR LA LISTE ?? complexité < O(n) ? --> Exercice 6 ? Un seul passage
 
 const skyscraperB = (array) => {
     let result = 1
