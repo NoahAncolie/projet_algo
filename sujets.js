@@ -24,16 +24,18 @@ const isKInArrayB = (array, k) => {
     return result
 }
 
-// exercice 3 again --> Récursif. Complexité ??? --> error sur un Array ?? Which one ?? call stack exceeded ? Manquait de parenthèses ???????
+// exercice 3 again --> Complexité moins forte, récursif. TOujours +/- O(n²)
 
-const isKInArrayC = (array, k, x = 0, y = 0) => {
-    if (array[x] + array[y] === k) {
-        return true
-    } else if (x === array.length && y === array.length) {
+const isKInArrayC = (array, k, i = 0) => {
+    if (i === array.length) {
         return false
     }
-    isKInArrayC(array, k, x, y + 1)
-    isKInArrayC(array, k, x + 1, y)
+    for (let j = i; j < array.length; j++) {
+        if (array[i] + array[j] === k) {
+            return true
+        }
+    }
+    return (isKInArrayC(array, k, i + 1))
 }
 
 // exercice 2 --> complexité un peu moins que O(n²) --> Boucles imbriqués
