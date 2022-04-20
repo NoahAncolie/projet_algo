@@ -12,6 +12,30 @@ const isKInArrayA = (array, k) => {
     return (result)
 }
 
+// exercice 3 --> UN SEUL PASSAGE SUR LA LISTE ??? --> complexité O(n²) ? array.indexOf parse array ?
+
+const isKInArrayB = (array, k) => {
+    result = false
+    array.map(number => {
+        if (array.indexOf(k - number) !== -1) {
+            result =  true
+        }
+    })
+    return result
+}
+
+// exercice 3 again --> Récursif. Complexité ??? --> error sur un Array ?? Which one ?? call stack exceeded ? Manquait de parenthèses ???????
+
+const isKInArrayC = (array, k, x = 0, y = 0) => {
+    if (array[x] + array[y] === k) {
+        return true
+    } else if (x === array.length && y === array.length) {
+        return false
+    }
+    isKInArrayC(array, k, x, y + 1)
+    isKInArrayC(array, k, x + 1, y)
+}
+
 // exercice 2
 
 const skyscraperA = (array) => {
@@ -35,18 +59,6 @@ const skyscraperA = (array) => {
         }
     }
     return (result)
-}
-
-// exercice 3 --> UN SEUL PASSAGE SUR LA LISTE ??? --> complexité O(n²) ? array.indexOf parse array ?
-
-const isKInArrayB = (array, k) => {
-    result = false
-    array.map(number => {
-        if (array.indexOf(k - number) !== -1) {
-            result =  true
-        }
-    })
-    return result
 }
 
 // exercice 4 --> UN SEUL PASSAGE SUR LA LISTE ?? complexité < O(n) ? --> Exercice 6 ?
