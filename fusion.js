@@ -25,63 +25,47 @@ class Data {
         }
         return (result)
     }
-    merge = (arrayL, arrayR) => {
+}
 
+class MergeSort {
+    constructor(array) {
+        this.sorted = this.split(array)
     }
-    mergeSort = (array) => {
-        this.merge(arrayL, arrayR) 
+    split = (array) => {
+        if (array.length === 1) {
+            return (array)
+        }
+        return (this.merge(this.split(array.splice(0, Math.floor(array.length / 2))), this.split(array)))
+    }
+    merge = (arrayA, arrayB) => {
+        let tmp = []
+        while (arrayA.length && arrayB.length) {
+            if (arrayA[0] < arrayB[0]) {
+                tmp.push(arrayA.shift())
+            } else {
+                tmp.push(arrayB.shift())
+            }
+        }
+        return ([].concat(tmp, arrayA, arrayB))
     }
 }
 
-const sortArray = () => {
+const execute = (dataFile = process.argv[2]) => {
     fs.readFile(dataFile, 'utf8', (error, data) => {
     if (error) {
         console.error(error.message)
         return
     }
     myDatas = new Data(data.split(/\s+/))
-    })
+    if (myDatas.isOnlyNumbers()) {
+        let merge = new MergeSort(myDatas.array)
+        console.log("L'array rangé est ===> " + merge.sorted)
+    }
+})
 }
 
-//MERGE SORT
-function MERGEfunction(array, l, r, m) {
-    let tmp = array
-    let i = l
-    let j = m + 1
-    let k = l
-    console.log(`MERGE left : ${l}, right : ${r}, middle : ${m}`)
-    while (i <= m && j <= r) {
-        if (tmp[i] < tmp[j]) {
-            array[k] = tmp[i]
-            i++
-        } else if (tmp[j] < tmp[i]) {
-            array[k] = tmp[j]
-            j++
-        }
-        k++
-    }
-    while (i <= m) {
-        array[k] = tmp[i]
-        i++
-        k++
-    }
-    while (j <= r) {
-        array[k] = tmp[j]
-        j++
-        k++
-    }
+if (!dataFile) {
+    console.log("Need to enter a file name")
+} else {
+    execute()
 }
-
-function FUNCTION(array, l, r) {
-    if (l >= r) {
-        return;
-    }
-    middle = Math.floor((l + r) / 2)
-    FUNCTION(array, l, middle)
-    FUNCTION(array, middle + 1, r)
-    MERGEfunction(array, l, r, middle)
-}
-
-array = [0, 4, 2, 3, 7, 6, 8]
-FUNCTION(array, 0, 6)
-console.log(array)

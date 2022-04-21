@@ -62,7 +62,6 @@ const skyscraperA = (array) => {
     }
     return (result)
 }
-
 // exercice 4 --> UN SEUL PASSAGE SUR LA LISTE ?? complexité < O(n) ? --> Exercice 6 ? Un seul passage
 
 const skyscraperB = (array) => {
